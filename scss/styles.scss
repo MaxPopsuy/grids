@@ -1,0 +1,267 @@
+@import './reset.scss';
+@import './variables.scss';
+.shop {
+	width: 100%;
+  max-width: 1602px;
+	display: grid;
+  grid-template: repeat(2, 260px) / repeat(auto-fit, minmax(150px, 260px));
+  margin: 30px auto;
+	justify-content: center;
+  @media screen and (max-width: 425px) {
+    display: flex;
+		justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+.shop__item--big-row {
+  grid-column: span 2;
+  @media screen and (max-width: 425px) {
+    width: 100%;
+  }
+}
+.shop__item--big-column {
+  grid-row: span 2;
+}
+
+.shop__img {
+  width: 100%;
+  height: 100%;
+  transition: $main-animation;
+  object-fit: cover;
+  position: relative;
+}
+.shop__item {
+	width: 100%;
+  position: relative;
+  transition: $main-animation;
+	cursor: pointer;
+
+  &:hover .shop__overlay {
+    opacity: 1;
+  }
+  &:hover .shop__btn {
+    opacity: 1;
+  }
+  & picture {
+    width: 100%;
+    height: 100%;
+  }
+  &--central {
+    @media screen and (max-width: 1000px) {
+      grid-area: 2/2/3/3;
+    }
+    @media screen and (max-width: 800px) {
+      grid-area: auto;
+    }
+  }
+}
+.shop__overlay {
+  opacity: 0;
+  background: linear-gradient(0deg, rgba(100, 194, 158, 0.75) 100%, rgba(100, 194, 158, 0.75) 100%);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: $main-animation;
+
+}
+.shop__btn {
+  opacity: 0;
+  z-index: 3;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: $main-font;
+  color: #fff;
+  text-transform: uppercase;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background-color: transparent;
+  transition: $main-animation;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 51px;
+    height: 30px;
+    background: url(../img/shop-icon.png);
+    background-repeat: no-repeat;
+    margin: 0 auto 14px;
+  }
+}
+
+.gallery {
+  display: grid;
+  margin: 0 auto;
+  grid-template: repeat(9, 200px) / repeat(3, minmax(300px, 533px));
+  max-width: 1600px;
+  justify-content: center;
+  @media screen and (max-width: 1200px) {
+    grid-template: repeat(13, 200px) / repeat(2, minmax(250px, 1fr));
+  }
+  @media screen and (max-width: 425px) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  & div:nth-child(4) {
+    @media screen and (min-width: 1200px) {
+      &::after {
+        bottom: -10px;
+      }
+    }
+    @media screen and (min-width: 425px) {
+      &::after {
+        top: -10px;
+      }
+    }
+    @media screen and (max-width: 425px) {
+      order: 4;
+    }
+  }
+  & div:nth-child(5) {
+    @media screen and (max-width: 425px) {
+      order: 6;
+    }
+  }
+  & div:nth-child(6) {
+    @media screen and (max-width: 425px) {
+      order: 5;
+    }
+  }
+  & div:nth-child(8) {
+    @media screen and (max-width: 425px) {
+      order: 8;
+    }
+  }
+}
+
+.card {
+  grid-row: span 2;
+  background-color: #fff;
+  text-align: center;
+  padding: 60px 16px 0;
+  &::after {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    margin: 0 auto;
+    transform: rotate(45deg);
+    bottom: -10px;
+    left: calc(50% - 10px);
+    position: absolute;
+
+    z-index: 2;
+  }
+  @media screen and (max-width: 425px) {
+    width: 100%;
+  }
+}
+.card__img {
+  margin-bottom: 28px;
+}
+.card__headline {
+  text-transform: uppercase;
+  padding-bottom: 25px;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: $main-font;
+  color: $headline-color;
+}
+
+.card__text {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: $main-font;
+  color: $text-color;
+  line-height: 1.4;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: justify;
+  &::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 1px;
+    background-color: $text-color;
+    margin: 40px auto;
+  }
+  @media screen and (max-width: 1200px) {
+    font-size: 14px;
+  }
+}
+.gallery__img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.gallery__ico {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.gallery__item {
+  position: relative;
+}
+.gallery__item--img {
+  picture {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.gallery__item--middle {
+  grid-row: span 3;
+  @media screen and (max-width: 1200px) {
+    grid-row: span 1.5;
+  }
+  @media screen and (max-width: 425px) {
+    height: 400px;
+    width: 50%;
+    order: 10;
+  }
+}
+.gallery__item--big {
+  grid-column: span 2;
+  grid-row: span 3;
+  min-width: 300px;
+  @media screen and (max-width: 425px) {
+    height: 400px;
+    width: 100%;
+  }
+}
+.gallery__item--small {
+  @media screen and (max-width: 1200px) {
+    &-black {
+      grid-area: 4/2/5/3;
+      @media screen and (max-width: 425px) {
+        height: 200px;
+        width: 100%;
+        order: 5;
+      }
+    }
+    &-red {
+      grid-area: 6/1/7/2;
+      @media screen and (max-width: 425px) {
+        height: 200px;
+        width: 100%;
+        order: 3;
+      }
+    }
+  }
+  @media screen and (max-width: 425px) {
+    height: 200px;
+    width: 100%;
+    order: 8;
+  }
+}
